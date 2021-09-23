@@ -1,6 +1,17 @@
 # Initial README
 
+## NVIM
 
+coc plugins:
+```
+coc-spell-checker
+coc-prettier
+coc-git
+coc-pyright
+coc-json
+coc-docker
+coc-yaml
+```
 
 
 

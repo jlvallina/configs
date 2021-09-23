@@ -5,4 +5,5 @@ nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeShowHidden=1 " Show hidden files in NerdTree buffer.
 
-
+" Debugger
+let g:vimspector_enable_mappings='HUMAN'

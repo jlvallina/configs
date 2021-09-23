@@ -24,6 +24,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdcommenter' " Comment/Uncomment tool
     Plug 'tmhedberg/matchit' " Switch to the begining and the end of a block by pressing %
     Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
+    
+    " Debugger
+    Plug 'puremourning/vimspector'
 
 call plug#end()
 
