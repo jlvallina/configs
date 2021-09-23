@@ -22,3 +22,10 @@ coc-yaml
 ```shell
 0 */1 * * * ~/Documents/rclone.sh &
 ```
+
+
+## ZSH
+
+```
+ln -s zsh/zshrc /home/fofui/.zshrc
+```
