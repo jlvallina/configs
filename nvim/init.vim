@@ -21,7 +21,7 @@ set rnu
 
 
 " Extra files
-
+so ~/.config/nvim/parts/general.vim
 so ~/.config/nvim/parts/plugins.vim
 so ~/.config/nvim/parts/plugin-config.vim
 so ~/.config/nvim/parts/maps.vim

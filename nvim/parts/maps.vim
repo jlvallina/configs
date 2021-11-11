@@ -1,3 +1,10 @@
+" Splits
+" <C-w>s split horizontal
+" <C-w>v split vertical
+
+" vim commands
+
+
 " Remap copy/paste
 vnoremap <leader>y "+y
 
@@ -6,7 +13,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
+nmap <silent> gn <Plug>(coc-rename)
 
 " Use <c-space> to trigger completion. TODO: integrate kite
 if &filetype == "javascriptNO" || &filetype == "pythonNO"
@@ -17,8 +24,10 @@ endif
 
 
 " Remap nerdtree
-nmap <silent> ff :NERDTreeToggle<CR>
-
+" nmap <silent> ff :NERDTreeToggle<CR>
+" nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+nmap <silent> ff :Explore<CR>
+nmap <silent> FF :edit.<CR>
 
 " Code action on <leader>a
 vmap <leader>a <Plug>(coc-codeaction-selected)<CR>
@@ -42,3 +51,4 @@ nnoremap <leader>d<space> :call vimspector#Continue()
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint 
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBrakpoint
+nmap <leader><space> <Plug>VimspectorBalloonEval

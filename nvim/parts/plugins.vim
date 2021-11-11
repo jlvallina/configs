@@ -7,9 +7,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline' " A cool status bar
     Plug 'vim-airline/vim-airline-themes' " Airline themes
 
-    " Tree
-    Plug 'scrooloose/nerdtree' " A Tree-like side bar for better navigation
-
     " syntax
     Plug 'sheerun/vim-polyglot'    
 
@@ -24,7 +21,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdcommenter' " Comment/Uncomment tool
     Plug 'tmhedberg/matchit' " Switch to the begining and the end of a block by pressing %
     Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
-    
+    Plug 'jpalardy/vim-slime' "send text to console    
+
     " Debugger
     Plug 'puremourning/vimspector'
 
