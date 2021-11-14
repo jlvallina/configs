@@ -27,5 +27,5 @@ coc-yaml
 ## ZSH
 
 ```
-ln -s zsh/zshrc /home/fofui/.zshrc
+ln -s $PWD/zshrc ~/.zshrc
 ```
