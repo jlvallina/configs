@@ -62,7 +62,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod], "e", lazy.spawn("pcmanfm")),
 
     # Terminal
-    ([mod], "Return", lazy.spawn("alacritty")),
+    ([mod], "Return", lazy.spawn("terminator")),
 
     # Redshift
     ([mod], "r", lazy.spawn("redshift -O 2400")),
@@ -88,4 +88,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     # Brightness
     ([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
     ([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
+
+    # Lock Screen
+    ([mod, "control"], "l", lazy.spawn("physlock")),
 ]]

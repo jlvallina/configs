@@ -25,12 +25,14 @@ def icon(fg='text', bg='dark', fontsize=16, text="?"):
 
 def powerline(fg="light", bg="dark"):
     return widget.TextBox(
-        **base(fg, bg),
-        text="", # Icon: nf-oct-triangle_left
-        fontsize=37,
-        padding=-2
+            text='\uE0B2',
+            padding=0,
+            fontsize=37,
+            **base(fg, bg)
     )
 
+def double_powerline(fg="light", bg="dark"):
+    return [powerline('dark', fg), powerline(bg, 'dark')]
 
 def workspaces(): 
     return [
@@ -47,7 +49,7 @@ def workspaces():
             active=colors['active'],
             inactive=colors['inactive'],
             rounded=False,
-            highlight_method='block',
+            highlight_method='line',
             urgent_alert_method='block',
             urgent_border=colors['urgent'],
             this_current_screen_border=colors['focus'],
@@ -68,38 +70,53 @@ primary_widgets = [
     separator(),
 
     powerline('color4', 'dark'),
-
     icon(bg="color4", text=' '), # Icon: nf-fa-download
-    
     widget.CheckUpdates(
         background=colors['color4'],
         colour_have_updates=colors['text'],
         colour_no_updates=colors['text'],
         no_update_string='0',
-        display_format='{updates}',
+        display_format='{updates} ',
         update_interval=1800,
         custom_command='checkupdates',
     ),
 
-    powerline('color3', 'color4'),
-
+    *double_powerline('color4', 'color3'),
     icon(bg="color3", text=' '),  # Icon: nf-fa-feed
-    
-    widget.Net(**base(bg='color3'), interface='wlp2s0'),
+    widget.Wlan(
+        **base(bg='color3'),
+        padding=10,
+        format='{essid} {percent:2.0%}',
+        interface='wlp1s0'
+    ),
 
-    powerline('color2', 'color3'),
-
+    *double_powerline('color3', 'color2'),
     widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
-
     widget.CurrentLayout(**base(bg='color2'), padding=5),
 
-    powerline('color1', 'color2'),
-
+    *double_powerline('color2', 'color1'),
     icon(bg="color1", fontsize=17, text=' '), # Icon: nf-mdi-calendar_clock
-
     widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %H:%M '),
 
-    powerline('dark', 'color1'),
+    *double_powerline('color1', 'color0'),
+    icon(bg="color0", fontsize=17, text=' '),
+    widget.PulseVolume(
+        background=colors['color0'],
+        fmt='{} ',
+        padding=10,
+        volume_app='pavucontrol'
+    ),
+
+    *double_powerline('color0', 'color3'),
+    icon(bg="color3", fontsize=17, text=' '),
+    widget.Battery(
+        background=colors['color3'],
+        padding=10,
+        format='{char} {percent:2.0%} {watt:.2f} W'
+    ),
+
+
+    powerline('dark', 'color3'),
 
     widget.Systray(background=colors['dark'], padding=5),
 ]
