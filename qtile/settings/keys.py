@@ -56,10 +56,10 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "m", lazy.spawn("rofi -show")),
 
     # Browser
-    ([mod], "b", lazy.spawn("firefox")),
+    ([mod], "b", lazy.spawn("google-chrome-stable --force-device-scale-factor=1.5")),
 
     # File Explorer
-    ([mod], "e", lazy.spawn("pcmanfm")),
+    ([mod], "e", lazy.spawn('terminator -e "ranger" -p hold')),
 
     # Terminal
     ([mod], "Return", lazy.spawn("terminator")),

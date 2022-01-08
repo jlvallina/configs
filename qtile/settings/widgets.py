@@ -3,15 +3,19 @@ from .theme import colors
 
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
-def base(fg='text', bg='dark'): 
+def base(fg='text', bg='dark'):
     return {
         'foreground': colors[fg],
-        'background': colors[bg]
+        'background': colors[bg],
     }
 
 
-def separator():
-    return widget.Sep(**base(), linewidth=0, padding=5)
+def separator(fg='light', bg='dark'):
+    return widget.Sep(
+        **base(fg=fg, bg=bg),
+        linewidth=1, 
+        padding=5
+    )
 
 
 def icon(fg='text', bg='dark', fontsize=16, text="?"):
@@ -34,9 +38,9 @@ def powerline(fg="light", bg="dark"):
 def double_powerline(fg="light", bg="dark"):
     return [powerline('dark', fg), powerline(bg, 'dark')]
 
-def workspaces(): 
+def workspaces():
     return [
-        separator(),
+        separator(fg='text', bg='dark'),
         widget.GroupBox(
             **base(fg='light'),
             font='UbuntuMono Nerd Font',
@@ -58,9 +62,8 @@ def workspaces():
             other_screen_border=colors['dark'],
             disable_drag=True
         ),
-        separator(),
+        separator(fg='active'),
         widget.WindowName(**base(fg='focus'), fontsize=14, padding=5),
-        separator(),
     ]
 
 
@@ -69,56 +72,82 @@ primary_widgets = [
 
     separator(),
 
-    powerline('color4', 'dark'),
-    icon(bg="color4", text=' '), # Icon: nf-fa-download
+    # powerline('color4', 'dark'),
+    # icon(bg="color4", text=' '), # Icon: nf-fa-download
     widget.CheckUpdates(
-        background=colors['color4'],
-        colour_have_updates=colors['text'],
-        colour_no_updates=colors['text'],
-        no_update_string='0',
-        display_format='{updates} ',
+        **base(fg='light', bg='dark'),
+        colour_have_updates=colors['color4'],
+        colour_no_updates=colors['active'],
+        no_update_string='',
+        display_format='  {updates}',
         update_interval=1800,
+        padding=10,
         custom_command='checkupdates',
+        execute='terminator -e "sudo pacman -Syu && yay" -p hold'
     ),
 
-    *double_powerline('color4', 'color3'),
-    icon(bg="color3", text=' '),  # Icon: nf-fa-feed
+    # *double_powerline('color4', 'color3'),
+    # icon(bg="color3", text=' '),  # Icon: nf-fa-feed
     widget.Wlan(
-        **base(bg='color3'),
+        **base(fg='light', bg='dark'),
         padding=10,
-        format='{essid} {percent:2.0%}',
+        format='  {essid} {percent:2.0%}',
         interface='wlp1s0'
     ),
 
-    *double_powerline('color3', 'color2'),
-    widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
-    widget.CurrentLayout(**base(bg='color2'), padding=5),
+    # *double_powerline('color3', 'color2'),
+    widget.CurrentLayoutIcon(
+        **base(fg='light', bg='dark'),
+        scale=0.65
+    ),
+    widget.CurrentLayout(
+        **base(fg='light', bg='dark'),
+        padding=10
+    ),
 
-    *double_powerline('color2', 'color1'),
-    icon(bg="color1", fontsize=17, text=' '), # Icon: nf-mdi-calendar_clock
-    widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %H:%M '),
+    # *double_powerline('color2', 'color1'),
+    # icon(bg="color1", fontsize=17, text=' '), # Icon: nf-mdi-calendar_clock
+    widget.Clock(
+        **base(fg='light', bg='dark'),
+        format='   %d/%m/%Y   %H:%M',
+        timezone='America/Lima'
+    ),
+    widget.Clock(
+        **base(fg='light', bg='dark'),
+        format=' / %H:%M',
+        timezone='Europe/Madrid'
+    ),
 
-    *double_powerline('color1', 'color0'),
-    icon(bg="color0", fontsize=17, text=' '),
+
+    # *double_powerline('color1', 'color0'),
+    # icon(bg="color0", fontsize=17, text=' '),
     widget.PulseVolume(
-        background=colors['color0'],
-        fmt='{} ',
+        **base(fg='light', bg='dark'),
+        emoji = False,
+        fmt='   {}',
+        step=10,
         padding=10,
         volume_app='pavucontrol'
     ),
 
-    *double_powerline('color0', 'color3'),
-    icon(bg="color3", fontsize=17, text=' '),
+    # *double_powerline('color0', 'color3'),
+    # icon(bg="color3", fontsize=17, text=' '),
     widget.Battery(
-        background=colors['color3'],
+        **base(fg='light', bg='dark'),
         padding=10,
-        format='{char} {percent:2.0%} {watt:.2f} W'
+        format='  {char} {percent:2.0%} {watt:.2f} W'
     ),
 
 
-    powerline('dark', 'color3'),
 
-    widget.Systray(background=colors['dark'], padding=5),
+    # powerline('dark', 'color3'),
+
+    widget.Systray(
+        background=colors['dark'],
+        padding=10
+    ),
+
+    separator(),
 ]
 
 secondary_widgets = [
