@@ -7,6 +7,7 @@
 from libqtile.config import Key, Group
 from libqtile.command import lazy
 from .keys import mod, keys
+from libqtile.log_utils import logger
 
 
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
@@ -32,3 +33,8 @@ for i, group in enumerate(groups):
         # Send window to workspace N
         Key([mod, "shift"], actual_key, lazy.window.togroup(group.name))
     ])
+
+keys.extend([
+    Key([mod], "Home", lazy.screen.next_group()),
+    Key([mod], "End", lazy.screen.prev_group()),
+])
