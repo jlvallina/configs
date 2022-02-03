@@ -1,0 +1,104 @@
+# [Created by task 2.6.0 11/10/2021 21:39:46]
+# Taskwarrior program configuration file.
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# You can also refence environment variables:
+#   variable=$HOME/task
+#   variable=$VALUE
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=/home/fofui/.task
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+# include light-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+# include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
+
+uda.taskwarrior-tui.keyconfig.quit=q
+uda.taskwarrior-tui.keyconfig.refresh=r
+uda.taskwarrior-tui.keyconfig.go-to-bottom=G
+uda.taskwarrior-tui.keyconfig.go-to-top=g
+uda.taskwarrior-tui.keyconfig.down=j
+uda.taskwarrior-tui.keyconfig.up=k
+uda.taskwarrior-tui.keyconfig.page-down=J
+uda.taskwarrior-tui.keyconfig.page-up=K
+uda.taskwarrior-tui.keyconfig.delete=x
+uda.taskwarrior-tui.keyconfig.done=d
+uda.taskwarrior-tui.keyconfig.start-stop=s
+uda.taskwarrior-tui.keyconfig.quick-tag=t
+uda.taskwarrior-tui.keyconfig.undo=u
+uda.taskwarrior-tui.keyconfig.edit=e
+uda.taskwarrior-tui.keyconfig.modify=m
+uda.taskwarrior-tui.keyconfig.shell=!
+uda.taskwarrior-tui.keyconfig.log=l
+uda.taskwarrior-tui.keyconfig.add=a
+uda.taskwarrior-tui.keyconfig.annotate=A
+uda.taskwarrior-tui.keyconfig.filter=/
+uda.taskwarrior-tui.keyconfig.zoom=z
+uda.taskwarrior-tui.keyconfig.context-menu=c
+uda.taskwarrior-tui.keyconfig.next-tab=]
+uda.taskwarrior-tui.keyconfig.previous-tab=[
+
+## Urgency calculator
+urgency.user.tag.next.coefficient=15.0 # +next tag
+urgency.due.coefficient=20.0 # overdue or near due date
+urgency.blocking.coefficient=8.0 # blocking other tasks
+urgency.uda.priority.H.coefficient=0.20 # high Priority
+urgency.uda.priority.M.coefficient=0.10 # medium Priority
+urgency.uda.priority.L.coefficient=0.05 # low Priority
+urgency.uda.estimate.coefficient=0.3 
+urgency.scheduled.coefficient=5.0 # scheduled tasks
+urgency.active.coefficient=4.0 # already started tasks
+urgency.age.coefficient=2.0 # coefficient for age
+urgency.annotations.coefficient=1.0 # has annotations
+urgency.tags.coefficient=1.0 # has tags
+# urgency.project.coefficient=1.0 # assigned to any project
+# urgency.project.soporte.coefficient=50.0 # assigned to soporte
+urgency.waiting.coefficient=-3.0 # waiting task
+urgency.blocked.coefficient=-20.0 # blocked by other tasks
+
+
+## Extra fields
+uda.assignee.type=string
+uda.assignee.label=Asignee
+uda.assignee.default=me
+
+uda.estimate.type=duration
+uda.estimate.label=Est
+uda.estimate.default=15min
+
+## SHOW
+report.next.labels=ID,Active,Age,Est,Deps,P,Project,Tag,Recur,S,Due,Until,Asignee,Description,Urg
+report.next.columns=id,start.age,entry.age,estimate,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,assignee,description.truncated_count,urgency
+
+report.next.filter=(status:pending or status:completed) -WAITING limit:page
+report.next.sort=status-,urgency-
+
+## COLORS
+color.deleted=grey
+color.completed=black on rgb142
+color.active=white
+color.overdue=white on rgb160
+color.scheduled=blue
+color.due.today=black on yellow
+color.blocked=magenta
+color.due=black on rgb019
