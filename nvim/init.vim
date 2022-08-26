@@ -1,30 +1,24 @@
-set nocompatible            " Set compatibility to Vim only.
-set showmatch				" show matching brackets.
-set ignorecase              " case insensitive matching
-set hlsearch                " highlight search results
-set tabstop=4               " number of columns occupied by a tab character
-set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-set expandtab               " converts tabs to white space
-set shiftwidth=4            " width for autoindents
-set autoindent              " indent a new line the same amount as the line just typed
-set number                  " add line numbers
-set cc=80                   " set an 80 column border for good coding style
-set encoding=utf-8
-filetype plugin indent on   " allows auto-indenting depending on file type
-syntax on					" Turn on syntax highlighting.
-filetype off 				" Helps force plug-ins to load correctly when it is turned back on below.
-set wrap					" Automatically wrap text that extends beyond the screen length.
-set modelines=0             " Turn off modelines
+" General
+source $HOME/.config/nvim/general/settings.vim
+source $HOME/.config/nvim/general/keys.vim
+source $HOME/.config/nvim/vim-plug/plugins.vim
 
-set nolist
-set rnu
+" Plugins
+source $HOME/.config/nvim/plug-config/netrw.vim
+source $HOME/.config/nvim/plug-config/coc.vim
+" source $HOME/.config/nvim/plug-config/nerdtree.vim
+source $HOME/.config/nvim/plug-config/explorer.vim
+source $HOME/.config/nvim/plug-config/indentLine.vim
+source $HOME/.config/nvim/plug-config/vim-closetag.vim
+source $HOME/.config/nvim/plug-config/signify.vim
+source $HOME/.config/nvim/plug-config/vim-commentary.vim
+" source $HOME/.config/nvim/plug-config/rnvimr.vim
+source $HOME/.config/nvim/plug-config/fzf.vim
+source $HOME/.config/nvim/plug-config/prettier.vim
+source $HOME/.config/nvim/plug-config/vimspector.vim
 
-
-" Extra files
-so ~/.config/nvim/parts/general.vim
-so ~/.config/nvim/parts/plugins.vim
-so ~/.config/nvim/parts/plugin-config.vim
-so ~/.config/nvim/parts/maps.vim
-
-" Colors 
-colorscheme gruvbox
+" luafile $HOME/.config/nvim/plug-config/nvim-treeseter.lua
+" Themes
+source $HOME/.config/nvim/general/colors.vim
+source $HOME/.config/nvim/themes/airline.vim
+source $HOME/.config/nvim/themes/nord.vim

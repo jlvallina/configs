@@ -137,10 +137,31 @@ pushmr() {
 }
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/fofui/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/fofui/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/fofui/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/fofui/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+# PyEnv
+# export PYENV_ROOT=$HOME/.pyenv
 
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
+
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export PATH="$PATH:$PYENV_ROOT/bin"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# # eval "$(pyenv init -)"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv virtualenv-init -)"
+
+
+
+# Run java in qtile
+#export _JAVA_AWT_WM_NONREPARENTING=1
+#export AWT_TOOLKIT=MToolkit
