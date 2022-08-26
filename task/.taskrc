@@ -78,9 +78,9 @@ urgency.blocked.coefficient=-20.0 # blocked by other tasks
 
 
 ## Extra fields
-uda.assignee.type=string
-uda.assignee.label=Asignee
-uda.assignee.default=me
+uda.assigned.type=string
+uda.assigned.label=Assigned
+uda.assigned.default=me
 
 uda.estimate.type=duration
 uda.estimate.label=Est
@@ -88,9 +88,9 @@ uda.estimate.default=15min
 
 ## SHOW
 report.next.labels=ID,Active,Age,Est,Deps,P,Project,Tag,Recur,S,Due,Until,Asignee,Description,Urg
-report.next.columns=id,start.age,entry.age,estimate,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,assignee,description.truncated_count,urgency
+report.next.columns=id,start.age,entry.age,estimate,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,assigned,description.truncated_count,urgency
 
-report.next.filter=(status:pending or status:completed) -WAITING limit:page
+report.next.filter=(status:pending or (status:completed and end:today)) -WAITING limit:page
 report.next.sort=status-,urgency-
 
 ## COLORS
@@ -102,3 +102,8 @@ color.scheduled=blue
 color.due.today=black on yellow
 color.blocked=magenta
 color.due=black on rgb019
+taskd.certificate=\/home\/fofui\/.task\/jvallina.cert.pem
+taskd.key=\/home\/fofui\/.task\/jvallina.key.pem
+taskd.ca=\/home\/fofui\/.task\/ca.cert.pem
+taskd.server=task-jvallina.duckdns.org:53589
+taskd.credentials=jvallina\/jvallina\/8012c94f-1d43-4838-9806-8d1fb09b2476
