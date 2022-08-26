@@ -6,27 +6,27 @@ from libqtile import layout
 from libqtile.config import Match
 from .theme import colors
 
-# Layouts and layout rules
-
 
 layout_conf = {
-    'border_focus': colors['focus'][0],
-    'border_width': 1,
-    'margin': 4
+    "border_width": 4,
+    "margin": 8,
+    "border_focus": colors.get("border_focus", "#7FFF00"),
+    "border_normal": colors.get("inactive", "#7FFF00")
 }
 
 layouts = [
-    layout.Max(),
-    layout.MonadTall(**layout_conf),
-    layout.MonadWide(**layout_conf),
-    # layout.Bsp(**layout_conf),
-    layout.Matrix(columns=2, **layout_conf),
-    # layout.RatioTile(**layout_conf),
-    # layout.Columns(),
-    layout.Tile(),
-    # layout.TreeTab(),
-    layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.MonadTall(
+        single_border_width=4,
+        single_margin=1,
+        **layout_conf
+    ),
+    layout.MonadWide(
+        single_border_width=4,
+        single_margin=1,
+        **layout_conf
+    ),
+    layout.Max(**layout_conf),
+    layout.Floating(**layout_conf),
 ]
 
 floating_layout = layout.Floating(
@@ -40,5 +40,5 @@ floating_layout = layout.Floating(
         Match(title='pinentry'),
         Match(title='Find/Replace'),
     ],
-    border_focus=colors["color4"][0]
+    border_focus=colors.get("urgent", "#7FFF00")
 )

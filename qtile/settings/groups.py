@@ -7,23 +7,15 @@
 from libqtile.config import Key, Group
 from libqtile.command import lazy
 from .keys import mod, keys
-from libqtile.log_utils import logger
+from libqtile.dgroups import simple_key_binder
 
 
-# Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
-# Icons: 
-# nf-fa-firefox, 
-# nf-fae-python, 
-# nf-dev-terminal, 
-# nf-fa-code, 
-# nf-oct-git_merge, 
-# nf-linux-docker,
-# nf-mdi-image, 
-# nf-mdi-layers
-
-groups = [Group(i) for i in [
-    "   ", "   ", "   ", "   ", "   ", "   ", "   ",
-]]
+groups = [Group("", layout='max'),
+          Group("", layout='monawide'),
+          Group("", layout='monadtall'),
+          Group("", layout='monadtall'),
+          Group("", layout='max'),
+          Group("", layout='floating')]
 
 for i, group in enumerate(groups):
     actual_key = str(i + 1)
@@ -38,3 +30,5 @@ keys.extend([
     Key([mod], "Home", lazy.screen.next_group()),
     Key([mod], "End", lazy.screen.prev_group()),
 ])
+
+

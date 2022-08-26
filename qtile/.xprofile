@@ -1,0 +1,6 @@
+xrandr --output eDP1 --primary --mode 1920x1080 --scale 1x1 --pos 0x1080 &
+redshift -l 55.7:12.6 -t 5700:3600 -g 0.8 -m randr -v &
+setxkbmap us &
+udiskie -t &
+/usr/bin/light-locker &
+feh --bg-scale ~/images/gruvox.png
